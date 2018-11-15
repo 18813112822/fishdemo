@@ -2,16 +2,18 @@
 using namespace std;
 
 CFish::CFish(){
+	m_CNextFish = nullptr;
 }
 
-CFish::CFish(CPoint* CLocation, CPoint* CDirection, int nSpeed, int nRadii, int nHP, int nLauchTime){
+CFish::CFish(CPoint* CLocation, CPoint* CDirection, int nSpeed, int nRadii, int nHP, int nGoldNum, long long lLastCheckTime){
 	m_CLocation = CLocation;
 	m_CDirection = CDirection;
 	m_nSpeed = nSpeed;
 	m_nRadii = nRadii;
 	m_nHP = nHP;
-	m_nLauchTime = nLauchTime;
+	m_lLastCheckTime = lLastCheckTime;
 	m_CNextFish = nullptr;
+	m_nGoldNum = nGoldNum;
 }
 
 CPoint* CFish::GetLocation(){
@@ -60,7 +62,11 @@ EIsLive CFish::DeleteHP(int attack){
 	}
 }
 
-int CFish::GetLaunchTime(){
-	return m_nLauchTime;
+int CFish::GetGoldNum(){
+	return m_nGoldNum;
+}
+
+long long CFish::GetLastCheckTime(){
+	return m_lLastCheckTime;
 
 }

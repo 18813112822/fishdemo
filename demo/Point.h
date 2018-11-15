@@ -3,14 +3,15 @@
 
 class CPoint{
 private:
-	int m_nX;
-	int m_nY;
-
+	double m_nX;
+	double m_nY;
 public:
-	CPoint(int x, int y);
-	void setPoint(int x, int y);	
-	int GetX();
-	int GetY();
+	CPoint(double x, double y);
+	void setPoint(double x, double y);	
+	double GetX();
+	double GetY();
+	void Unit();
+	static double GetDistance(CPoint*, CPoint*);
 };
 
 #endif

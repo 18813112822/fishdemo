@@ -9,16 +9,20 @@ private:
 	CPoint* m_CDirection;
 	int m_nSpeed;
 	CBullet* m_CNextBullet;
-	int m_nLaunchTime;
+	long long m_lLastCheckTime;
+	int m_nAttack;
 public:
-	CBullet(CPoint*, CPoint*, int, int);
+	CBullet();
+	CBullet(CPoint*, CPoint*, int, long long, int);
 	CPoint* GetLocation();
 	void SetLocation(CPoint*);
 	CPoint* GetDirection();
 	void SetDirection(CPoint*);
 	int GetSpeed();
 	CBullet* GetNextBullet();
-	int GetLaunchTime();
+	void SetNextBullet(CBullet*);
+	long long GetLastCheckTime();
+	int GetAttack();
 };
 
 #endif

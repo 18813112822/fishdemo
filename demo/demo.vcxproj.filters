@@ -27,11 +27,11 @@
     <ClInclude Include="Battery.h">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="Screen.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Point.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -42,6 +42,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Battery.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Screen.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
