@@ -12,11 +12,11 @@
 using namespace std;
 
 int main()
-{
+{	
 	CScreen CScreen0;
 	CPoint* pDirection = new CPoint(1, 2);
 	for(int i = 0; i < 30; i++){	
-		system("cls");
+		//system("cls");
 		if(i % 5 == 0)
 			CScreen0.LaunchBullet(pDirection);
 		if(i % 4 == 0)

@@ -83,6 +83,18 @@ void CScreen::Check(){
 	CFish* pFishPre = m_pFirstFish;
 	CFish* pFishCur = m_pFirstFish->GetNextFish();
 	double distance = 0;
+	
+	CFish* pF = pFishCur;
+	while(pF != nullptr){
+		std::cout << "Fish X:" << (pF->GetLocation())->GetX() << "Y:" << (pF->GetLocation())->GetY() << std::endl;
+		pF = pF->GetNextFish();
+	}
+
+	CBullet* pB = pBulletCur;
+	while(pB != nullptr){
+		std::cout << "Bullet X:" << (pB->GetLocation())->GetX() << "Y:" << (pB->GetLocation())->GetY() << std::endl;
+		pB = pB->GetNextBullet();
+	}
 
 	while(pBulletCur != nullptr){
 		while(pFishCur != nullptr){
@@ -138,12 +150,7 @@ void CScreen::Move(){
 
 		if(!IsInScreen(pCNewLocation))
 		{
-			/*std::cout << "old X:" << pOldLocation->GetX() << " Y:" << pOldLocation->GetY() << std::endl;
-			std::cout << "out X:" << pCNewLocation->GetX() << " Y:" << pCNewLocation->GetY() << std::endl;
-			std::cout << "Dir X:" << (pBulletCur->GetDirection())->GetX() << " Y:" << (pBulletCur->GetDirection())->GetY() << std::endl;*/
 			Reflex(pOldLocation, pCNewLocation, pBulletCur->GetDirection());
-			//std::cout << "reflex X:" << pCNewLocation->GetX() << " Y:" << pCNewLocation->GetY() << std::endl;
-			//std::cout << "Dir X:" << (pBulletCur->GetDirection())->GetX() << " Y:" << (pBulletCur->GetDirection())->GetY() << std::endl;
 		}
 		pBulletPre = pBulletCur;
 		pBulletCur = pBulletCur->GetNextBullet();
@@ -167,10 +174,9 @@ void CScreen::Move(){
 		pFishPre = pFishCur;
 		pFishCur = pFishCur->GetNextFish();
 	}
-	std::cout << n << "Ьѕгу" << std::endl;
+	//std::cout << n << "Ьѕгу" << std::endl;
 	m_pLastFish = pFishPre;
 	m_pLastBullet = pBulletPre;
-
 }
 
 void CScreen::Show(){
@@ -191,10 +197,10 @@ void CScreen::Show(){
 		CPoint* pLocation = pFishCur->GetLocation();
 		int x = (int)pLocation->GetX();
 		int y = (int)pLocation->GetY();
-		//std::cout << "Fish x:" << x << " y :" << y << std::endl;
+		//std::cout << "Fish x:" << pLocation->GetX() << " y :" << pLocation->GetY() << std::endl;
 		int nRadii = pFishCur->GetRadii();
 		screen[x][y] = '*';
-		for(int i = 1; i < nRadii; i++){
+		for(int i = 1; i <= nRadii; i++){
 			if(x+i < m_nLength){
 				screen[x+i][y] = '*';
 			}
@@ -220,7 +226,7 @@ void CScreen::Show(){
 		CPoint* pLocation = pBulletCur->GetLocation();
 		int x = (int)pLocation->GetX();
 		int y = (int)pLocation->GetY();
-		//std::cout << "Bullet x:" << x << " y :" << y << std::endl;
+		//std::cout << "Bullet x:" << pLocation->GetX() << " y :" << pLocation->GetY() << std::endl;
 		screen[x][y] = '*';
 		pBulletCur = pBulletCur->GetNextBullet();
 	}
