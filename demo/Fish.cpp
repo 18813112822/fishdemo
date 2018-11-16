@@ -2,35 +2,44 @@
 using namespace std;
 
 CFish::CFish(){
-	m_CNextFish = nullptr;
+	m_pLocation = nullptr;
+	m_pDirection = nullptr;
+	m_pNextFish = nullptr;
 }
 
-CFish::CFish(CPoint* CLocation, CPoint* CDirection, int nSpeed, int nRadii, int nHP, int nGoldNum, long long lLastCheckTime){
-	m_CLocation = CLocation;
-	m_CDirection = CDirection;
+CFish::CFish(CPoint* pLocation, CPoint* pDirection, int nSpeed, int nRadii, int nHP, int nGoldNum, long long lLastCheckTime){
+	m_pLocation = pLocation;
+	m_pDirection = pDirection;
 	m_nSpeed = nSpeed;
 	m_nRadii = nRadii;
 	m_nHP = nHP;
 	m_lLastCheckTime = lLastCheckTime;
-	m_CNextFish = nullptr;
+	m_pNextFish = nullptr;
 	m_nGoldNum = nGoldNum;
 }
 
-CPoint* CFish::GetLocation(){
-	return m_CLocation;
+CFish::~CFish(){
+	if(m_pLocation != nullptr)
+		delete m_pLocation;
+	if(m_pDirection != nullptr)
+		delete m_pDirection;
 }
 
-void CFish::SetLocation(CPoint* CLocation)
+CPoint* CFish::GetLocation(){
+	return m_pLocation;
+}
+
+void CFish::SetLocation(CPoint* pLocation)
 {
-	m_CLocation = CLocation;
+	m_pLocation = pLocation;
 }
 
 CPoint* CFish::GetDirection(){
-	return m_CDirection;
+	return m_pDirection;
 }
 
-void CFish::SetDirection(CPoint* CDirection){
-	m_CDirection = CDirection;
+void CFish::SetDirection(CPoint* pDirection){
+	m_pDirection = pDirection;
 }
 
 int CFish::GetSpeed(){
@@ -42,11 +51,11 @@ int CFish::GetRadii(){
 }
 
 CFish* CFish::GetNextFish(){
-	return m_CNextFish;
+	return m_pNextFish;
 }
 
 void CFish::SetNextFish(CFish* nextFish){
-	m_CNextFish = nextFish; 
+	m_pNextFish = nextFish; 
 }
 
 EIsLive CFish::DeleteHP(int attack){

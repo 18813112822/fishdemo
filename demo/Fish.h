@@ -10,17 +10,18 @@ enum EIsLive{
 
 class CFish{
 private:
-	CPoint* m_CLocation;
-	CPoint* m_CDirection;
+	CPoint* m_pLocation;
+	CPoint* m_pDirection;
 	int m_nSpeed;
 	int m_nRadii;
-	CFish* m_CNextFish;
+	CFish* m_pNextFish;
 	int m_nHP;
 	int m_nGoldNum;
 	long long m_lLastCheckTime;
 public:
 	CFish();
-	CFish(CPoint* CLocation, CPoint* CDirection, int nSpeed, int nRadii, int nHP, int nGoldNum, long long LastCheckTime);
+	CFish(CPoint* pLocation, CPoint* pDirection, int nSpeed, int nRadii, int nHP, int nGoldNum, long long LastCheckTime);
+	~CFish();
 	CPoint* GetLocation();
 	void SetLocation(CPoint*);
 	CPoint* GetDirection();

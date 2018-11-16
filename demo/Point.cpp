@@ -1,5 +1,10 @@
 #include "Point.h"
 #include <cmath>
+
+CPoint::~CPoint(){
+
+}
+
 CPoint::CPoint(double x, double y){
 	m_nX = x;
 	m_nY = y;

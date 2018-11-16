@@ -6,6 +6,7 @@ private:
 	double m_nX;
 	double m_nY;
 public:
+	~CPoint();
 	CPoint(double x, double y);
 	void setPoint(double x, double y);	
 	double GetX();

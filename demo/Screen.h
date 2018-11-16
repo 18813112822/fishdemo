@@ -8,19 +8,25 @@ class CBullet;
 
 class CScreen{
 private:
-	CFish* m_CFirstFish;//首节点为空
-	CFish* m_CLastFish;
-	CBullet* m_CFirstBullet;//首节点为空
-	CBullet* m_CLastBullet;
-	CBattery* m_CBattery;
+	CFish* m_pFirstFish;//首节点为空
+	CFish* m_pLastFish;
+	CBullet* m_pFirstBullet;//首节点为空
+	CBullet* m_pLastBullet;
+	CBattery* m_pBattery;
 	int m_nLength;
 	int m_nWidth;
 public:
 	CScreen();
+	~CScreen();
 	void LauchFish();
-	void LaunchBullet(CPoint* CClickLocation);
+	void LaunchBullet(CPoint* pClickLocation);
 	void Check();
 	void Move();
+	void Show();
+	bool IsInScreen(CPoint*);
+	bool LineIntersect(CPoint* pPointA, CPoint* pPointB, CPoint* pPointC, CPoint* pPointD);
+	void Reflex(CPoint* pStartLocation, CPoint* pEndLocation, CPoint* pDirection);
+	CBattery* GetBattery();
 };
 
 #endif

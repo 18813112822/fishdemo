@@ -6,13 +6,14 @@ class CBullet;
 
 class CBattery{
 private:
-	CPoint* m_CLocation;
+	CPoint* m_pLocation;
 	int m_nSpeed;
 	int m_nGoldNum;
 	int m_nBulletNum;
 	int m_nAttack;
 public:
-	CBattery(CPoint* CLocation, int nSpeed, int nGoldNum, int nBulletNum, int nAttack);
+	CBattery(CPoint* pLocation, int nSpeed, int nGoldNum, int nBulletNum, int nAttack);
+	~CBattery();
 	int GetSpeed();
 	void SetSpeed(int);
 	int GetGoldNum();

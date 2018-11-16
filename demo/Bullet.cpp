@@ -1,38 +1,45 @@
 #include "Bullet.h"
-using namespace std;
 
 CBullet::CBullet(){
-	m_CLocation = nullptr;
-	m_CDirection = nullptr;
+	m_pLocation = nullptr;
+	m_pDirection = nullptr;
 	m_nSpeed = 0;
 	m_lLastCheckTime = 0;
-	m_CNextBullet = nullptr;
+	m_pNextBullet = nullptr;
 }
 
 
-CBullet::CBullet(CPoint* CLocation, CPoint* CDirection, int nSpeed, long long LastCheckTime, int nAttack){
-	m_CLocation = CLocation;
-	m_CDirection = CDirection;
+CBullet::CBullet(CPoint* pLocation, CPoint* pDirection, int nSpeed, long long LastCheckTime, int nAttack){
+	m_pLocation = pLocation;
+	m_pDirection = pDirection;
 	m_nSpeed = nSpeed;
 	m_lLastCheckTime = LastCheckTime;
 	m_nAttack = nAttack;
-	m_CNextBullet = nullptr;
+	m_pNextBullet = nullptr;
+}
+
+CBullet::~CBullet(){
+	if(m_pDirection != nullptr)
+		delete m_pDirection;
+	
+	if(m_pLocation != nullptr)
+		delete m_pLocation;
 }
 
 CPoint* CBullet::GetLocation(){
-	return m_CLocation;
+	return m_pLocation;
 }
 
-void CBullet::SetLocation(CPoint* CLocation){
-	m_CLocation = CLocation;
+void CBullet::SetLocation(CPoint* pLocation){
+	m_pLocation = pLocation;
 }
 
 CPoint* CBullet::GetDirection(){
-	return m_CDirection;
+	return m_pDirection;
 }
 
-void CBullet::SetDirection(CPoint* CDirection){
-	m_CDirection = CDirection;
+void CBullet::SetDirection(CPoint* pDirection){
+	m_pDirection = pDirection;
 }
 
 int CBullet::GetSpeed(){
@@ -40,11 +47,11 @@ int CBullet::GetSpeed(){
 }
 
 CBullet* CBullet::GetNextBullet(){
-	return m_CNextBullet;
+	return m_pNextBullet;
 }
 
-void CBullet::SetNextBullet(CBullet* CNextBullet){
-	m_CNextBullet = CNextBullet;
+void CBullet::SetNextBullet(CBullet* pNextBullet){
+	m_pNextBullet = pNextBullet;
 }
 
 long long CBullet::GetLastCheckTime(){

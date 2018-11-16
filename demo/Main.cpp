@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <iostream>
 #include <windows.h>
 #include <time.h>
@@ -13,12 +14,18 @@ using namespace std;
 int main()
 {
 	CScreen CScreen0;
-	CPoint* CDirection = new CPoint(1, 1);
-	for(int i = 0; i < 10; i++){
-		CScreen0.LauchFish();
-		CScreen0.LaunchBullet(CDirection);
-		CScreen0.Check();
+	CPoint* pDirection = new CPoint(1, 2);
+	for(int i = 0; i < 30; i++){	
+		system("cls");
+		if(i % 5 == 0)
+			CScreen0.LaunchBullet(pDirection);
+		if(i % 4 == 0)
+			CScreen0.LauchFish();
 		CScreen0.Move();
+		CScreen0.Show();
+		CScreen0.Check();
+		Sleep(1000);
 	}
+	cout << "gold num " << CScreen0.GetBattery()->GetGoldNum() << endl;
 	return 0;
 }
