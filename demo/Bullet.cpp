@@ -1,3 +1,4 @@
+#include "Point.h"
 #include "Bullet.h"
 
 CBullet::CBullet(){

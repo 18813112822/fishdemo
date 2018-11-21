@@ -97,6 +97,7 @@ void CScreen::Check(){
 	}
 
 	while(pBulletCur != nullptr){
+		pFishPre = m_pFirstFish;
 		pFishCur = m_pFirstFish->GetNextFish();
 		while(pFishCur != nullptr){
 			distance = CPoint::GetDistance(pBulletCur->GetLocation(), pFishCur->GetLocation());
@@ -105,29 +106,46 @@ void CScreen::Check(){
 				if(pFishCur->DeleteHP(pBulletCur->GetAttack()) == EIL_Die){
 					m_pBattery->AddGoldNum(pFishCur->GetGoldNum());
 					pFishPre->SetNextFish(pFishCur->GetNextFish());
+					delete pFishCur;
+					pFishCur = nullptr;
 					pFishCur = pFishPre->GetNextFish();
 					pBulletPre->SetNextBullet(pBulletCur->GetNextBullet());
+					delete pBulletCur;
+					pBulletCur = nullptr;
 					pBulletCur = pBulletPre;
 					std::cout << "kill fish" << std::endl << std::endl;
-					break;
 				}
+				else
+				{
+					pBulletPre->SetNextBullet(pBulletCur->GetNextBullet());
+					delete pBulletCur;
+					pBulletCur = nullptr;
+					pBulletCur = pBulletPre;
+				}
+				break;
 			}
 			else
 			{
 				pFishPre = pFishCur;
-				pFishCur = pFishCur->GetNextFish();
+				if(pFishCur != nullptr){
+					pFishCur = pFishCur->GetNextFish();
+				}			
 			}
 		}
 		pBulletPre = pBulletCur;
-		pBulletCur = pBulletPre->GetNextBullet();
+		if(pBulletCur != nullptr){
+			pBulletCur = pBulletCur->GetNextBullet();
+		}
 	}
-	//std::cout << std::endl;
+	
 	m_pLastFish = m_pFirstFish;
-	while(m_pLastFish->GetNextFish() != nullptr){
+	while(m_pLastFish != nullptr && m_pLastFish->GetNextFish() != nullptr){
+		//std::cout << "LastFish while" << std::endl;
 		m_pLastFish = m_pLastFish->GetNextFish();
 	}
+	
 	m_pLastBullet = m_pFirstBullet;
-	while(m_pLastBullet->GetNextBullet() != nullptr){
+	while(m_pLastBullet != nullptr && m_pLastBullet->GetNextBullet() != nullptr){
 		m_pLastBullet = m_pLastBullet->GetNextBullet();
 	}
 }
@@ -170,6 +188,7 @@ void CScreen::Move(){
 		{
 			pFishPre->SetNextFish(pFishCur->GetNextFish());
 			delete pFishCur;
+			pFishCur = nullptr;
 			pFishCur = pFishPre;
 		}
 		pFishPre = pFishCur;

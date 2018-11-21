@@ -1,7 +1,7 @@
-﻿生成启动时间为 2018/11/21 9:40:59。
+﻿生成启动时间为 2018/11/21 10:25:56。
      1>项目“C:\Users\lizm03\Documents\Visual Studio 2010\Projects\demo\demo\demo.vcxproj”在节点 2 上(build 个目标)。
      1>InitializeBuildStatus:
-         正在创建“Release\demo.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+         正在对“Release\demo.unsuccessfulbuild”执行 Touch 任务。
        ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
          Main.cpp
@@ -24,4 +24,4 @@
 
 生成成功。
 
-已用时间 00:00:00.87
+已用时间 00:00:00.94
