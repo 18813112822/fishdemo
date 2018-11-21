@@ -97,6 +97,7 @@ void CScreen::Check(){
 	}
 
 	while(pBulletCur != nullptr){
+		pFishCur = m_pFirstFish->GetNextFish();
 		while(pFishCur != nullptr){
 			distance = CPoint::GetDistance(pBulletCur->GetLocation(), pFishCur->GetLocation());
 			//std::cout << "distance:" << distance << std::endl;
